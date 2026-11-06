@@ -24,7 +24,9 @@ from handlers.users.group import rt as group
 from handlers.users.AdminGroup import rt as AdminGroup
 from handlers.users.adminfilter import rt as adminfilter
 # from handlers.users.contact import rt as contact
-# from handlers.users.test import rt as test
+from handlers.users.ChatData import rt as ChatPhoto
+from handlers.users.ChatMember import rt as ChatMember
+from handlers.users.test import rt as test
 from handlers.users.animation import rt as animation
 dp = Dispatcher()
 async def main():
@@ -34,9 +36,9 @@ async def main():
     dp.include_router(prezident)
     dp.include_router(car)
     # dp.include_router(AdminGroup)
-    dp.include_router(group)
-    dp.include_router(private)
-    dp.include_router(adminfilter)
+    # dp.include_router(group)
+    # dp.include_router(private)
+    # dp.include_router(adminfilter)
     # dp.include_router(formatting)
     dp.include_router(time)
     # dp.include_router(message)
@@ -46,6 +48,8 @@ async def main():
     dp.include_router(random_kuchuk)
     dp.include_router(random_mushuk)
     dp.include_router(mushuk)
+    dp.include_router(ChatPhoto)
+    dp.include_router(ChatMember)
     # dp.include_router(contact)
     # dp.include_router(test)
     dp.include_router(animation)
