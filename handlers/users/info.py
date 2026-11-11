@@ -22,5 +22,7 @@ async def info(msg: types.Message):
     n+="/mushuk\n"
     n+="random_mushuk\n"
     n+="random_kuchuk\n"
+    n += "/anketa\n"
+
     await msg.answer(n)
 

@@ -27,6 +27,8 @@ from handlers.users.adminfilter import rt as adminfilter
 from handlers.users.ChatData import rt as ChatPhoto
 from handlers.users.ChatMember import rt as ChatMember
 from handlers.users.test import rt as test
+from handlers.users.test import rt as AntiRek
+from handlers.users.anketa import rt as anketa
 from handlers.users.animation import rt as animation
 dp = Dispatcher()
 async def main():
@@ -43,15 +45,17 @@ async def main():
     dp.include_router(time)
     # dp.include_router(message)
     dp.include_router(admin)
-    dp.include_router(me)
-    dp.include_router(kuchuk)
-    dp.include_router(random_kuchuk)
-    dp.include_router(random_mushuk)
-    dp.include_router(mushuk)
-    dp.include_router(ChatPhoto)
-    dp.include_router(ChatMember)
+    # dp.include_router(me)
+    # dp.include_router(kuchuk)
+    # dp.include_router(random_kuchuk)
+    # dp.include_router(random_mushuk)
+    # dp.include_router(mushuk)
+    # dp.include_router(ChatPhoto)
+    # dp.include_router(ChatMember)
     # dp.include_router(contact)
     # dp.include_router(test)
+    dp.include_router(AntiRek)
+    dp.include_router(anketa)
     dp.include_router(animation)
     await dp.start_polling(bot)
 if __name__ == "__main__":
