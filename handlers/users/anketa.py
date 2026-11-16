@@ -5,7 +5,7 @@ from config.settings import ADMINS
 rt = Router()
 @rt.message(filters.Command("anketa"))
 async def anketa(msg: types.Message, state: FSMContext):
-    await msg.answer("ismingizni kiriting: ")
+    await msg.answer("ismingizni kiriting:")
     await state.set_state(AnketaState.ism)
 
 @rt.message(AnketaState.ism)
@@ -14,17 +14,25 @@ async def ism(msg: types.Message, state: FSMContext):
     ism = msg.text
     await msg.answer(f"{ism} familyangizni kiriting: ")
     await state.set_state(AnketaState.familya)
-    await state.update_data(ism=msg.text)
+
 
 @rt.message(AnketaState.familya)
 async def familya(msg: types.Message, state: FSMContext):
-    await msg.answer(f"{ism} yoshngizni kiriting: ")
-    familya = msg.text
-    await state.set_state(AnketaState.yosh)
-    await state.update_data(familya=msg.text)
+    global familya
+    familiya= msg.text
+
+    if str(familiya).endswith("a") or str(familiya).endswith("v"):
+        await state.set_state(AnketaState.yosh)
+        # await state.update_data(familya=msg.text)
+    else:
+        await msg.answer("Familyangizni TOGRI KIRITING!")
+        await state.set_state(AnketaState.familya)
+
+
 
 @rt.message(AnketaState.yosh)
 async def yosh(msg: types.Message, state: FSMContext):
+    await msg.answer(f"{ism} yoshngizni kiriting: ")
     if msg.text.isdigit():
         yosh = int(msg.text)
         await msg.answer("barcha ma'lumotlaringizni qabul qildik, e'tiboringzi uchun rahmat!")

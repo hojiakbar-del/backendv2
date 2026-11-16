@@ -29,7 +29,9 @@ from handlers.users.ChatMember import rt as ChatMember
 from handlers.users.test import rt as test
 from handlers.users.test import rt as AntiRek
 from handlers.users.anketa import rt as anketa
+from handlers.users.tugma import rt as tugma
 from handlers.users.animation import rt as animation
+from handlers.users.shared import rt as shared
 dp = Dispatcher()
 async def main():
     bot = Bot(BOT_TOKEN)
@@ -56,7 +58,9 @@ async def main():
     # dp.include_router(test)
     dp.include_router(AntiRek)
     dp.include_router(anketa)
+    dp.include_router(tugma)
     dp.include_router(animation)
+    dp.include_router(shared)
     await dp.start_polling(bot)
 if __name__ == "__main__":
     try:
